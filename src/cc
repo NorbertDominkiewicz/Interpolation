@@ -1,0 +1,43 @@
+public void methodNewton(double w){
+        double[] storeVal  = new double[x.length];
+        double [][] val = new double[x.length - 1][];
+        int helpArrayVal = x.length - 1;
+        double wynik = 0;
+        for (int k = 0; k < x.length - 1; k++){
+            if(k == 0){
+                val[k] = new double[1];
+                storeVal[k] = y[k];
+            } else if(k == 1){
+                System.out.println("helpArrayVal: " + helpArrayVal);
+                double[] tab = new double[helpArrayVal];
+                System.out.println("Tworzę tablicę o wielkosci: " + tab.length);
+                for(int j = k; j < x.length; j++){
+                    if(j == helpArrayVal){
+                        break;
+                    }
+                    System.out.println("Liczę: (" + y[j+1] + " - " + y[j] + ") / (" + x[j+1] + " - " + x[j] + ")");
+                    tab[j] = (y[j+1] - y[j]) / (x[j+1] - x[j]);
+                    System.out.println("Tab[j] = " + tab[j]);
+                }
+                val[k] = tab;
+                helpArrayVal -= 1;
+            } else{
+                System.out.println("helpArrayVal: " + helpArrayVal);
+                double[] tab = new double[helpArrayVal];
+                System.out.println("Tworzę tablicę o wielkosci: " + tab.length);
+                for(int j = k; j < x.length; j++){
+                    if(j == helpArrayVal){
+                        break;
+                    }
+                    System.out.println("Liczę: (" + val[k][j+1] + " - " + val[k][j] + ") / (" + x[j+1] + " - " + x[j] + ")");
+                    tab[j] = (y[j+1] - y[j]) / (x[j+1] - x[j]);
+                    System.out.println("Tab[j] = " + tab[j]);
+                }
+                val[k] = tab;
+                helpArrayVal -= 1;
+            }
+        }
+        for(int k = 0; k < storeVal.length; k++){
+            System.out.println(storeVal[k]);
+        }
+    }

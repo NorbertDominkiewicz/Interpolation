@@ -1,38 +1,44 @@
-public class Macierz {
+public class Matrix {
     double[][]tab;
     int wiersze;
     int kolumny;
-    Macierz(double[][] tab){
+    Matrix(double[][] tab){
         this.tab = tab;
         wiersze = tab.length;
         kolumny = tab[0].length;
     }
+    Matrix(int size){
+        wiersze = size;
+        kolumny = size +1;
+        tab = new double[wiersze][kolumny];
+    }
+
     public void wypisz() {
         for (int i = 0; i < tab.length; i++) {
-            for (int j = 0; j < tab[i].length; j++) {
+            for (int j = 0; j < tab[0].length; j++) {
                 System.out.print(" " + tab[i][j] + " ");
             }
             System.out.println();
         }
     }
 
-    private void setWartosc(Macierz m, int i, int j, double value) {
+    private void setWartosc(Matrix m, int i, int j, double value) {
         m.tab[i][j] = value;
     }
 
     public void oblicz(){
-        Macierz m = zerowanie();
+        Matrix m = zerowanie();
         m.rownanie();
     }
 
-    public Macierz zerowanie(){
+    public Matrix zerowanie(){
         double[][] tab2 = new double[tab.length][tab[0].length];
         for (int i = 0; i < wiersze; i++) {
             for (int j = 0; j < kolumny; j++) {
                 tab2[i][j] = tab[i][j];
             }
         }
-        Macierz wynikowa = new Macierz(tab2);
+        Matrix wynikowa = new Matrix(tab2);
         int k=0;
         while(k<wiersze-1){
             double shrWartosc;
