@@ -1,5 +1,6 @@
 public class Matrix {
     double[][]tab;
+    double[]wyniki;
     int wiersze;
     int kolumny;
     Matrix(double[][] tab){
@@ -27,8 +28,8 @@ public class Matrix {
     }
 
     public void oblicz(){
-        Matrix m = zerowanie();
-        m.rownanie();
+        zerowanie();
+        rownanie();
     }
 
     public Matrix zerowanie(){
@@ -61,7 +62,7 @@ public class Matrix {
     }
 
     private void rownanie() {
-        double[] wyniki = new double[wiersze];
+        wyniki = new double[wiersze];
         for (int i = wiersze - 1; i >= 0; i--) {
             double suma = tab[i][kolumny - 1];
             for (int j = i + 1; j < kolumny - 1; j++) {
@@ -71,11 +72,8 @@ public class Matrix {
                 if (tab[i][i] == 0) throw new ArithmeticException("Dzielenie przez zero!");
                 wyniki[i] = suma / tab[i][i];
             } catch (ArithmeticException e) {
-                System.out.println(e.getMessage());
+                //System.out.println(e.getMessage());
             }
-        }
-        for (int i = 0; i < wyniki.length; i++) {
-            System.out.println("x"+i+" = "+wyniki[i]);
         }
     }
 
